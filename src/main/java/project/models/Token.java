@@ -23,7 +23,7 @@ public class Token {
     @Column(nullable = false)
     private String token;
 
-    @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "token_type")
     private TokenType tokenType;
 
@@ -33,7 +33,7 @@ public class Token {
     @Column(nullable = false)
     private boolean revoked;
 
-    @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
     @JoinColumn(name = "user")
     private User user;

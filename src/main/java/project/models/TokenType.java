@@ -1,6 +1,5 @@
 package project.models;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,6 +24,6 @@ public class TokenType {
     @Column(name = "type")
     private String type;
 
-    @OneToMany(mappedBy = "tokenType", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "tokenType", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Token> tokens;
 }

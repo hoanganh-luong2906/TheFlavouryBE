@@ -1,9 +1,10 @@
 package project.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Set;
 
@@ -29,6 +30,6 @@ public class Role {
     )
     private Set<Permission> permissions;
 
-    @OneToOne(mappedBy = "role", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "role", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private User user;
 }

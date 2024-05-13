@@ -15,7 +15,6 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -37,8 +36,6 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "category")
-    @JsonIgnore
-    @JsonManagedReference
     private Category category;
 
     @Column(name = "price", nullable = false)
@@ -71,4 +68,12 @@ public class Product {
     @LastModifiedBy
     private String updatedBy;
 
+    @OneToMany(mappedBy = "product")
+    private Set<ProductMeta> productMeta;
+
+    @OneToMany(mappedBy = "product")
+    private Set<CartItem> cartItems;
+
+    @OneToMany(mappedBy = "product")
+    private Set<OrderItem> orderItems;
 }

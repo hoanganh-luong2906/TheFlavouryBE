@@ -1,7 +1,5 @@
 package project.dto;
 
-import java.util.Date;
-
 public interface UserDTO {
 
     public Integer getId();

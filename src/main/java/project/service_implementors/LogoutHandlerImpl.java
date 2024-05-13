@@ -15,10 +15,9 @@ public class LogoutHandlerImpl implements LogoutHandler {
     private final TokenDAO tokenDAO;
 
     /**
-     * @param request logout request
-     * @param response logout response (no response)
-     * @param authentication
-     * Process the request, check existence in the database then revoke it.
+     * @param request        logout request
+     * @param response       logout response (no response)
+     * @param authentication Process the request, check existence in the database then revoke it.
      */
     @Override
     public void logout(
