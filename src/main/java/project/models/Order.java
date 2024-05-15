@@ -32,19 +32,19 @@ public class Order {
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<OrderItem> orderItems;
 
-    @Column(name="sub_total", nullable = false, columnDefinition = "double default 0")
+    @Column(name="sub_total", nullable = false)
     @Min(0)
     private double subTotal;
 
-    @Column(name = "total_discount", nullable = false, columnDefinition = "double default 0")
+    @Column(name = "total_discount", nullable = false)
     @Min(0)
     private double totalDiscount;
 
-    @Column(name = "total_price", nullable = false, columnDefinition = "double default 0")
+    @Column(name = "total_price", nullable = false)
     @Min(0)
     private double totalPrice;
 
-    @Column(name = "note", nullable = true, columnDefinition = "text")
+    @Column(name = "note", nullable = true)
     private String note;
 
     @OneToOne(fetch = FetchType.LAZY)

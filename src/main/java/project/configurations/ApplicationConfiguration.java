@@ -12,6 +12,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.w3c.dom.ls.LSResourceResolver;
+import org.xml.sax.ErrorHandler;
+import org.xml.sax.SAXException;
 import project.models.Permission;
 import project.models.Role;
 import project.models.TokenType;
@@ -21,6 +25,10 @@ import project.repositories.RoleDAO;
 import project.repositories.TokenTypeDAO;
 import project.repositories.UserDAO;
 
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.validation.Validator;
+import java.io.IOException;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -60,45 +68,36 @@ public class ApplicationConfiguration {
     }
 
     @Bean
-    public CommandLineRunner initData() {
-        return new CommandLineRunner() {
+    public Validator validator() {
+        return new Validator() {
             @Override
-            public void run(String... args) throws Exception {
-                TokenType tokenType;
-                Role role = Role.builder().build();
-                if (tokenTypeDAO.findAll().isEmpty()) {
-                    tokenType = TokenType.builder()
-                            .type("Bearer")
-                            .build();
-                    tokenTypeDAO.save(tokenType);
-                }
-                if (permissionDAO.findAll().isEmpty() && roleDAO.findAll().isEmpty()) {
-                    role.setRole("ADMIN");
-                    Set<Permission> permissions = new HashSet<>();
-                    for (int i = 0; i < 4; i++) {
-                        List<String> permissionList =
-                                List.of("user:read", "user:create", "user:update", "user:delete");
-                        var permission = Permission.builder()
-                                .permission(permissionList.get(i))
-                                .build();
-                        permissions.add(permission);
-                    }
-                    role.setPermissions(permissions);
-                    permissionDAO.saveAll(permissions);
-                    roleDAO.save(role);
-                }
-                if (userDAO.findAll().isEmpty()) {
-                    User user = User.builder()
-                            .name("Hoang Anh")
-                            .email("admin@gmail.com")
-                            .password(passwordEncoder().encode("1"))
-                            .role(role)
-                            .dob(new Date())
-                            .gender("Male")
-                            .actived(true)
-                            .build();
-                    userDAO.save(user);
-                }
+            public void reset() {
+
+            }
+
+            @Override
+            public void validate(Source source, Result result) throws SAXException, IOException {
+
+            }
+
+            @Override
+            public void setErrorHandler(ErrorHandler errorHandler) {
+
+            }
+
+            @Override
+            public ErrorHandler getErrorHandler() {
+                return null;
+            }
+
+            @Override
+            public void setResourceResolver(LSResourceResolver resourceResolver) {
+
+            }
+
+            @Override
+            public LSResourceResolver getResourceResolver() {
+                return null;
             }
         };
     }

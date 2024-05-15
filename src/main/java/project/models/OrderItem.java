@@ -53,7 +53,7 @@ public class OrderItem {
     @Min(0)
     private double totalPrice;
 
-    @Column(name = "content", nullable = true, columnDefinition = "text")
+    @Column(name = "content", nullable = true)
     private String content;
 
     @CreatedBy

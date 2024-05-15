@@ -41,7 +41,7 @@ public class CartItem {
     @Column(name = "total_price", nullable = false)
     private double totalPrice;
 
-    @Column(name = "is_checked_out", nullable = false, columnDefinition = "boolean default false")
+    @Column(name = "is_checked_out", nullable = false)
     private boolean isCheckedOut;
 
     @Column(name = "created_at")

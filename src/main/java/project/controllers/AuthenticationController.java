@@ -1,5 +1,6 @@
 package project.controllers;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -21,7 +22,7 @@ public class AuthenticationController {
     private final AuthenticationService authenticationService;
 
     @GetMapping("login")
-    public ResponseEntity<ResponseObject> login(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<ResponseObject> login(@RequestBody @Valid LoginRequest loginRequest) {
         try {
             ResponseObject responseObject = authenticationService.login(loginRequest);
             return ResponseEntity.ok(responseObject);

@@ -42,11 +42,11 @@ public class Product {
     @Min(1000)
     private int price;
 
-    @Column(name = "discount", nullable = false, columnDefinition = "double default 0")
+    @Column(name = "discount", nullable = false)
     @Min(0)
     private double discount;
 
-    @Column(name = "is_available", nullable = false, columnDefinition = "boolean default true")
+    @Column(name = "is_available", nullable = false)
     private boolean isAvailable;
 
     @Column(name = "description", nullable = true)
