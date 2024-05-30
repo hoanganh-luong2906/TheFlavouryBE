@@ -31,7 +31,7 @@ The easiest way to deploy the sample application to OpenShift is to use the [Ren
 oc new-app codecentric/springboot-maven3-centos~https://github.com/codecentric/springboot-sample-app
 ```
 
-If you want to access the app from outside your OpenShift installation, you have to expose the springboot-sample-app service:
+If you want to access the app from outside your OpenShift installation, you have to expose the the-flavoury-be service:
 
 ```shell
 oc expose springboot-sample-app --hostname=www.example.com
